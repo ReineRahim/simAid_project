@@ -1,0 +1,134 @@
+/* =======================================================
+   SignUp.css — matches landing page design
+   ======================================================= */
+* { box-sizing: border-box; }
+
+.signup-root {
+  font-family: "Inter", sans-serif;
+}
+
+.sa-nav {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 16px;
+  background: rgba(60,20,110,.45);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+/* glass card center */
+.signup-stage {
+  display: grid;
+  place-items: center;
+  padding: 24px 16px;
+}
+.signup-card {
+  max-width: 460px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  padding: 26px 24px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+  text-align: center;
+}
+
+/* Typography */
+.signup-card h1 {
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.4rem, 1.2rem + 1vw, 2rem);
+}
+.signup-card .lead {
+  color: #f9f7ff;
+  opacity: .95;
+  margin: 4px 0 16px;
+}
+.accent {
+  background: linear-gradient(90deg, var(--pink), var(--yellow));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Inputs */
+.signup-card input {
+  width: 100%;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 10px;
+  padding: 12px;
+  color: #fff;
+  font-size: 1rem;
+  margin: 8px 0;
+}
+.signup-card input:focus {
+  border-color: rgba(255,255,255,0.6);
+  box-shadow: 0 0 0 3px rgba(139,92,246,0.25);
+  outline: none;
+}
+.signup-card input::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+
+/* Buttons */
+.signup-card button[type="submit"] {
+  width: 100%;
+  background: linear-gradient(90deg, var(--pink), var(--purple), var(--green), var(--yellow), var(--pink));
+  background-size: 300% 100%;
+  animation: flow 6s linear infinite;
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 14px;
+  padding: 12px 18px;
+  margin-top: 8px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(255,107,157,.35);
+  transition: transform .2s ease, box-shadow .3s ease;
+}
+.signup-card button[type="submit"]:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(255,107,157,.5);
+}
+@keyframes flow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.su-form { display: grid; gap: 12px; }
+.su-field { display: grid; gap: 6px; }
+.su-label { font-weight: 600; color: #fff; }
+.su-input {
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #fff;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.25);
+}
+.su-input::placeholder { color: rgba(255,255,255,0.7); }
+.su-input:focus {
+  outline: none;
+  border-color: rgba(255,255,255,0.6);
+  box-shadow: 0 0 0 3px rgba(139,92,246,0.25);
+}
+.su-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 6px; }
+.btn { padding: 12px 16px; border-radius: 14px; font-weight: 700; border: none; cursor: pointer; }
+.btn--primary {
+  background: linear-gradient(90deg, var(--pink), var(--purple), var(--green), var(--yellow), var(--pink));
+  background-size: 300% 100%;
+  animation: flow 6s linear infinite;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(255,107,157,.35);
+}
+.btn--secondary { background: rgba(255,255,255,0.15); color: #fff; }
+.su-error { color: #fecaca; margin-top: 4px; }
+@keyframes flow { 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
+
+/* Helper texts */
+.auth-switch { color: #f9f7ff; margin: 8px 0 12px; }
+.auth-switch a { color: #fff; font-weight: 600; }
+.subtle-status { color: #ddd6fe; margin-top: 10px; }
+.error-text { color: #fecaca; margin-top: 10px; }

@@ -1,0 +1,319 @@
+/* 🌸 Global styles */
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #fefefe;
+  color: #1f2937;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* 🩷 Header */
+.App-header {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background: linear-gradient(to right, #fef2f2, #f0fdfa);
+  border-bottom: 2px solid #fbcfe8;
+}
+
+.App-header h1 {
+  font-size: clamp(1.5rem, 2vw + 1rem, 2.5rem);
+  color: #111827;
+  margin-bottom: 0.25rem;
+}
+
+.App-header p {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* 🧱 Main Content */
+.App-main {
+  flex: 1;
+  padding: 2rem 1rem;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 💫 Menu Bar Styling (replaces inline styles) */
+.menuBar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #f3f4f6;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.menuLink {
+  text-decoration: none;
+}
+
+.menuBtn {
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #619ad6ff;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.menuBtn:hover {
+  background-color: #4e86c1;
+}
+
+/* Base: let the app be full height */
+html, body, #root { height: 100%; margin: 0; }
+* { box-sizing: border-box; }
+
+/* Lock scroll when we want */
+.no-scroll { overflow: hidden; }
+
+/* Mobile-safe viewport var (value is set from JS) */
+:root { --vh: 1vh; }
+
+/* Landing layout */
+.landing-root {
+  position: fixed;          /* pin to viewport */
+  inset: 0;                 /* top:0 right:0 bottom:0 left:0 */
+  height: calc(var(--vh) * 100); /* exact visible height */
+  background: linear-gradient(to bottom, #fff1f2, #ffffff, #ecfdf5);
+  overflow: hidden;         /* no scroll here */
+}
+
+/* Fixed menu at top */
+.landing-menu {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 56px;
+  display: flex; gap: 12px;
+  justify-content: center; align-items: center;
+  padding: 12px;
+  background: rgba(255,255,255,0.9);
+  border-bottom: 1px solid #f1f1f1;
+  z-index: 10;
+}
+
+/* Content area below the menu, still inside viewport */
+.landing-content {
+  position: absolute;
+  top: 56px;                 /* reserve space for menu */
+  left: 0; right: 0; bottom: 0;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto; /* hero, features, spacer, certificate */
+  place-items: center;
+  padding: 0 16px;
+}
+
+/* Background emoji layer */
+.landing-bg {
+  position: absolute; inset: 0;
+  overflow: hidden; pointer-events: none;
+}
+
+/* Cardy bits */
+.card { background:#fff; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+
+/* Typo clamps so it never overflows */
+.h1-clamp { font-weight: 800; color:#be123c; margin: 0 0 8px;
+  font-size: clamp(28px, 4.5vw, 48px);
+}
+.p-clamp { color:#4b5563; margin: 0 0 24px;
+  font-size: clamp(14px, 1.6vw, 16px);
+}
+
+/* Button */
+.btn-primary {
+  width: 100%; height: 48px; border: 0; border-radius: 16px;
+  background:#fb7185; color:#fff; font-weight:700;
+  box-shadow: 0 6px 16px rgba(251,113,133,.3);
+  transition: background .2s ease;
+}
+.btn-primary:hover { background:#e11d48; }
+
+/* Small icon cards */
+.icon-card { border-radius: 16px; padding: 16px; display:flex; flex-direction:column; align-items:center; gap:4px; }
+.icon-row { display:flex; gap:16px; }
+
+/* Certificate */
+.certificate { margin-bottom: 12px; border:1px solid #fecdd3; padding: 16px 24px; border-radius: 12px; background: rgba(255,255,255,.85); backdrop-filter: blur(4px); }
+
+/* full-screen signup layout */
+.signup-root {
+  position: fixed;
+  inset: 0;
+  height: calc(var(--vh) * 100);
+  background: linear-gradient(to bottom right, #fff1f2, #ecfdf5);
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  overflow: hidden;
+}
+
+.signup-card-scroll {
+  max-height: min(640px, 92vh);
+  width: 100%;
+  max-width: 420px;
+  overflow: auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  padding: 24px;
+}
+
+/* ✨ Sign Up Page */
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #fff1f2, #ecfdf5);
+  padding: 1.5rem;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.signup-container h1 {
+  font-size: clamp(1.6rem, 2vw + 1rem, 2.2rem);
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* 🧾 Form Card */
+.signup-form-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  width: 100%;
+  max-width: 420px;
+  animation: fadeInUp 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+/* subtle fade-up animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 🧩 Inputs */
+.signup-form-card input {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 0.7rem;
+  font-size: 0.95rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.signup-form-card input:focus {
+  border-color: #fb7185;
+  box-shadow: 0 0 0 3px rgba(251, 113, 133, 0.2);
+  outline: none;
+}
+
+/* 🧵 Buttons */
+.signup-form-card button[type="submit"],
+.signup-form-card button[type="button"] {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.signup-form-card button[type="submit"] {
+  background-color: #fb7185;
+  color: white;
+}
+.signup-form-card button[type="submit"]:hover { background-color: #e11d48; }
+
+.signup-form-card button[type="button"] {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+.signup-form-card button[type="button"]:hover { background-color: #e5e7eb; }
+
+/* 🧾 Footer */
+.App-footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+  border-top: 1px solid #f3f4f6;
+  background-color: #fafafa;
+  margin-top: auto;
+}
+
+/* 📱 Responsive tweaks */
+@media (max-width: 600px) {
+  .App-main { padding: 1rem; }
+  .signup-form-card { padding: 1.5rem; border-radius: 12px; }
+  .signup-container { padding: 1rem; }
+  .menuBar { flex-direction: column; align-items: center; }
+  .App-header h1 { font-size: 1.6rem; }
+}
+
+/* Profile example (kept from your CSS) */
+.profile-root {
+  min-height: calc(var(--vh, 1vh) * 100);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: linear-gradient(to bottom right, #fff1f2, #ecfdf5);
+}
+.profile-card-scroll {
+  width: 100%;
+  max-width: 480px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  padding: 24px 28px;
+  max-height: min(700px, calc(var(--vh, 1vh) * 100 - 48px));
+  overflow-y: auto;
+  animation: fadeInUp 0.5s ease;
+}
+.profile-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.back-btn { background: none; border: none; color: #e11d48; font-size: 1rem; cursor: pointer; }
+.profile-info { display: flex; align-items: center; gap: 16px; margin: 20px 0; }
+.avatar { width: 70px; height: 70px; border-radius: 50%; background: #ffe4e6; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+.details h2 { margin: 0; color: #111827; }
+.details p { color: #6b7280; margin: 2px 0; }
+.role { font-weight: 600; color: #e11d48; }
+.stats-section { margin-top: 20px; }
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; }
+.stat-card { background: #fdf2f8; border-radius: 12px; text-align: center; padding: 12px; font-weight: 600; }
+.emoji { display: block; font-size: 1.5rem; margin-bottom: 4px; }
+.action-links { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+.btn-secondary, .btn-primary { text-align: center; padding: 10px 0; border-radius: 10px; font-weight: 600; text-decoration: none; }
+.btn-primary { background-color: #e11d48; color: white; }
+.btn-secondary { background-color: #f3f4f6; color: #111827; }

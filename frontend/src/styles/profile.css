@@ -1,0 +1,262 @@
+.profile-page {
+  padding: 20px;
+  color: #111;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+}
+
+.profile-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.profile-header-card {
+  background: linear-gradient(135deg, #f43f5e, #ec4899);
+  border-radius: 18px;
+  color: white;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.profile-avatar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.avatar-icon {
+  font-size: 2.5rem;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+}
+
+.profile-info h2 {
+  margin: 0;
+  font-weight: 700;
+}
+
+.progress-bar-container {
+  background: rgba(255,255,255,0.2);
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin-top: 8px;
+}
+
+.progress-label {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.progress-bar {
+  background: rgba(255,255,255,0.3);
+  border-radius: 999px;
+  height: 8px;
+  margin: 6px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: white;
+  transition: width 0.4s ease;
+}
+
+.progress-text {
+  font-size: 0.85rem;
+  text-align: right;
+  opacity: 0.9;
+}
+
+/* Stats Row */
+.profile-stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.stat-box {
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+  color: #111;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.stat-box.yellow {
+  background: #fef9c3;
+}
+
+.stat-box.green {
+  background: #dcfce7;
+}
+
+.stat-box.red {
+  background: #fee2e2;
+}
+
+.stat-icon {
+  font-size: 1.6rem;
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-weight: 800;
+  font-size: 1.3rem;
+}
+
+/* Badges */
+.badges-section {
+  margin-top: 30px;
+}
+
+.badges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.badge-card {
+  background: white;
+  border-radius: 16px;
+  padding: 14px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.badge-card.unlocked {
+  transform: scale(1.02);
+  border: 2px solid #10b981;
+}
+
+.badge-card.locked {
+  opacity: 0.6;
+}
+
+.badge-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  background-color: #f6f7f9;
+  
+}
+
+.no-badges {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.no-badges-icon {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.chip {
+  display: inline-block;
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.chip.ok {
+  background: rgba(16,185,129,0.15);
+  color: #065f46;
+}
+
+.chip.muted {
+  background: rgba(0,0,0,0.05);
+  color: #6b7280;
+}
+
+.btn.danger {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.btn.danger:hover {
+  background-color: #dc2626;
+}
+
+.certificates-section h3 { margin: 16px 0 10px; }
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.cert-tile {
+  background: #fff;
+  border: 1px solid rgba(2,6,23,.06);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 26px rgba(2,6,23,.08);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.cert-tile img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  background: #f6f7f9;
+}
+
+.cert-txt {
+  padding: 10px 12px;
+}
+
+.cert-txt strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.cert-txt span {
+  font-size: .85rem;
+  color: #64748b;
+}
+
+.cert-actions {
+  padding: 10px 12px 12px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn.small {
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: #eba959;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+}
+
+.btn.primary {
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: #eb9533;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+}
+
+.certificate-section { margin-top: 32px; text-align: center; }
+.certificate-card { margin: 16px auto; max-width: 840px; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 24px rgba(0,0,0,.08); }
+.certificate-image { width: 100%; height: auto; display: block; }
+

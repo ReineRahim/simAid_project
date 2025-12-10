@@ -1,0 +1,270 @@
+/* =======================================================
+   home.css — Home page (Levels Overview)
+   Matches the gradient + typography of landing/sign-up
+   ======================================================= */
+
+* { box-sizing: border-box; }
+
+.home-root {
+  position: relative;
+  min-height: calc(var(--vh, 1vh) * 100);
+  color: #fff;
+  background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+  background-size: 400% 400%;
+  animation: bgshift 30s ease infinite;
+  overflow-x: hidden;
+  padding-bottom: 60px;
+}
+
+/* Animated gradient background */
+@keyframes bgshift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Top toolbar (profile button) */
+.home-toolbar {
+  display: flex;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 20px 0;
+  justify-content: space-between;
+}
+
+.profile-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .3s ease, transform .2s ease;
+}
+.profile-pill:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+}
+.profile-pill .avatar {
+  font-size: 1.2rem;
+}
+.profile-pill .who {
+  font-size: 1rem;
+}
+
+.landing-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .3s ease, transform .2s ease;
+}
+.landing-pill:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+}
+.landing-pill .who {
+  font-size: 1rem;
+}
+
+/* Header */
+.home-head {
+  text-align: center;
+  margin: 20px auto 30px;
+  padding: 0 20px;
+  max-width: 800px;
+}
+.home-head h1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.8rem, 2.5vw, 3rem);
+  line-height: 1.1;
+  color: #fff;
+  margin-right: 130px;
+}
+.home-head .accent {
+  background: linear-gradient(90deg, var(--pink), var(--yellow));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.home-head .lead {
+  font-family: "Inter", sans-serif;
+  color: #f9f7ff;
+  opacity: .9;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+/* Levels grid */
+.home-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+@media (min-width: 720px) {
+  .home-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1100px) {
+  .home-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Level cards */
+.level-card {
+  position: relative;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 18px;
+  padding: 18px 16px 20px;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  transition: transform .25s ease, box-shadow .25s ease;
+  min-height: 180px;
+}
+.level-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0,0,0,.35);
+}
+.level-card h3 {
+  font-family: "Poppins", sans-serif;
+  margin: 10px 0 4px;
+  font-size: 1.1rem;
+}
+.level-card .muted {
+  font-family: "Inter", sans-serif;
+  opacity: .9;
+  font-size: .95rem;
+}
+.level-card .card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.level-card .emoji {
+  font-size: 1.8rem;
+}
+
+/* Unlocked / Locked cards */
+.unlocked {
+  cursor: pointer;
+}
+.locked {
+  pointer-events: none;
+  opacity: .85;
+  filter: grayscale(.3);
+}
+
+.badge {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid rgba(255,255,255,.2);
+  background: rgba(255,255,255,.08);
+}
+.unlocked-badge {
+  color: #dcfce7;
+  border-color: rgba(74,222,128,.35);
+}
+.locked-badge {
+  color: #fee2e2;
+  border-color: rgba(248,113,113,.35);
+}
+
+.card-actions {
+  margin-top: 10px;
+}
+
+/* Lock overlay */
+.lock-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 18px;
+}
+.lock-icon {
+  width: 48px;
+  height: 48px;
+  fill: #fff;
+  opacity: 0.8;
+}
+
+/* Skeleton loading cards */
+.level-card.skeleton {
+  min-height: 180px;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.08) 25%,
+    rgba(255,255,255,0.16) 37%,
+    rgba(255,255,255,0.08) 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+@keyframes shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+}
+
+/* Error message */
+.home-error {
+  max-width: 640px;
+  margin: 16px auto 24px;
+  text-align: center;
+  color: #fff;
+}
+.home-error p {
+  margin-bottom: 10px;
+  opacity: .9;
+}
+
+/* Small button styling (shared with landing) */
+.btn.small {
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  border-radius: 10px;
+}
+.btn.flow {
+  background: linear-gradient(90deg, var(--pink), var(--purple), var(--green), var(--yellow), var(--pink));
+  background-size: 300% 100%;
+  animation: flow 6s linear infinite;
+  box-shadow: 0 8px 24px rgba(255,107,157,.35);
+}
+.btn.flow:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(255,107,157,.5);
+}
+.btn.ghost {
+  background: rgba(255,255,255,.1);
+}
+.btn.ghost:hover {
+  background: rgba(255,255,255,.2);
+}
+@keyframes flow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .home-head h1 { font-size: 1.8rem; }
+  .level-card { padding: 16px; }
+  .home-toolbar { padding: 14px 16px; }
+}

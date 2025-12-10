@@ -1,0 +1,73 @@
+.badge-modal-backdrop{
+  position:fixed; inset:0; background:rgba(0,0,0,.45);
+  display:grid; place-items:center; z-index:1000;
+  animation: fadeIn .2s ease-out;
+}
+@keyframes fadeIn{ from {opacity:0} to {opacity:1} }
+
+.badge-modal{
+  width:min(560px, 92vw);
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:20px; padding:22px; color:#eaf1ff; position:relative;
+  box-shadow:0 30px 80px rgba(9,11,18,.45);
+  overflow:hidden; isolation:isolate;
+}
+
+.badge-close{
+  position:absolute; right:8px; top:8px; border:none; background:transparent;
+  color:#eaf1ff; font-size:22px; cursor:pointer; padding:6px 10px; opacity:.8;
+}
+.badge-close:hover{ opacity:1 }
+
+.badge-icon{
+  width:104px; height:104px; display:grid; place-items:center;
+  border-radius:999px; margin:6px auto 10px;
+  background:rgb(255, 255, 255);
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 10px 30px rgba(0,0,0,.35), inset 0 0 40px rgba(255,255,255,.06);
+}
+.badge-icon img{ width:64px; height:64px; object-fit:contain }
+.badge-icon span{ font-size:48px }
+
+.badge-modal h2{
+  text-align:center; margin:6px 0 2px; font-size:28px; font-weight:900;
+}
+.badge-name{
+  text-align:center; margin:0; font-weight:800; letter-spacing:.2px;
+  color:#cbd9ff;
+}
+.badge-desc{
+  text-align:center; margin:8px auto 16px; color:#a8b6d6; max-width:42ch;
+}
+
+.badge-actions{
+  display:flex; gap:10px; justify-content:center;
+}
+.btn{
+  padding:10px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.06); color:#fff; cursor:pointer;
+}
+.btn.flow{
+  background:linear-gradient(90deg, #ff5470, #8b5cf6); border-color:transparent;
+  box-shadow:0 10px 22px rgba(139,92,246,.35);
+}
+
+/* sparkle / ring effects */
+.badge-fireworks{
+  position:absolute; inset:-20%; z-index:-1; pointer-events:none; opacity:.8;
+  background:
+    radial-gradient(5px 5px at 20% 40%, #ff7aa2 99%, transparent),
+    radial-gradient(5px 5px at 65% 30%, #8b5cf6 99%, transparent),
+    radial-gradient(5px 5px at 85% 70%, #22c55e 99%, transparent),
+    radial-gradient(5px 5px at 30% 80%, #f59e0b 99%, transparent);
+  animation: confetti 900ms ease-out forwards, drift 18s linear infinite;
+}
+@keyframes confetti{ 0%{transform:translateY(-40px);opacity:0} 40%{opacity:1} 100%{transform:translateY(80px);opacity:0}}
+@keyframes drift{ from{transform:translateY(0)} to{transform:translateY(-60px)} }
+
+.badge-ring{
+  position:absolute; inset:-2px; border-radius:22px; z-index:-1;
+  background:conic-gradient(from 200deg, rgba(139,92,246,.28), rgba(255,84,112,.28), rgba(34,197,94,.24), rgba(139,92,246,.28));
+  filter:blur(18px); opacity:.45;
+}

@@ -1,0 +1,204 @@
+/* =======================================================
+   app.css — Global styles, design tokens, layouts, utilities
+   Single animated background for the whole app
+   Mobile-first
+   ======================================================= */
+
+/* Design tokens (shared across the app) */
+:root {
+  --ink: #1f2937;
+  --ink-muted: #6b7280;
+  --ring: rgba(31, 41, 55, 0.08);
+
+  /* Brand palette used across pages */
+  --pink: #ff6b9d;
+  --purple: #8b5cf6;
+  --green: #4ade80;
+  --yellow: #fbbf24;
+
+  /* Global gradient tokens */
+  --bg1: #4c1d95;
+  --bg2: #7c3aed;
+  --bg3: #a78bfa;
+
+  /* mobile-safe viewport unit (optionally set from JS) */
+  --vh: 1vh;
+}
+
+/* Base reset + typography */
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+
+/* =======================================================
+   Global Animated Background — shared by all pages
+   (no page should set its own body/page background)
+   ======================================================= */
+html, body {
+  overflow-x: hidden;
+  color: #f5f3ff; /* default on dark bg; components can override */
+  position: relative;
+}
+
+/* Main animated gradient */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+  background-size: 400% 400%;
+  animation: bgshift 30s ease infinite;
+}
+
+/* Soft moving glow overlays */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(700px 700px at 18% 28%, rgba(139, 92, 246, .55), transparent 60%),
+    radial-gradient(900px 900px at 84% 72%, rgba(255, 107, 157, .35), transparent 60%),
+    radial-gradient(800px 800px at 42% 86%, rgba(74, 222, 128, .22), transparent 60%);
+  filter: blur(42px);
+  mix-blend-mode: screen;
+  animation: floatxy 28s ease-in-out infinite alternate;
+  opacity: .75;
+}
+
+/* Animations */
+@keyframes bgshift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes floatxy {
+  0% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(2%, -1%, 0); }
+  100% { transform: translate3d(-2%, 1%, 0); }
+}
+
+/* Motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  body::after {
+    animation: none !important;
+  }
+}
+
+/* =======================================================
+   App shell (transparent so the global bg shows through)
+   ======================================================= */
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh; /* better on mobile than 100vh */
+  overflow-x: hidden;
+  /* remove any solid/gradient fill here to keep the global bg visible */
+  background: transparent;
+  backdrop-filter: none;
+}
+
+/* Optional glassy header/footer if you use them */
+.App-header,
+.App-footer {
+  background: rgba(255,255,255,0.08);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  color: #fff;
+}
+
+.App-header {
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+.App-header h1 {
+  font-size: clamp(1.5rem, 2vw + 1rem, 2.5rem);
+  margin: 0 0 .25rem;
+  color: #fff;
+}
+.App-header p {
+  color: #e9e7ff;
+  font-size: .9rem;
+  margin: 0;
+}
+
+.App-footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: .85rem;
+  color: #e9e7ff;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  margin-top: auto;
+}
+
+/* Sticky menu (shared — transparent/glass) */
+.menuBar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: .75rem;
+  background: rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  padding: .75rem 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.menuBar a { text-decoration: none; color: #fff; }
+.menuBar button {
+  background: #60a5fa;
+  border: 0;
+  color: #fff;
+  padding: .6rem 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color .25s ease;
+}
+.menuBar button:hover { background: #2563eb; }
+
+/* Utilities */
+.no-scroll { overflow: hidden; }
+
+/* Minimal badge logo */
+.logo-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.logo-mark {
+  width: 40px; height: 40px; display: grid; place-items: center;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  border: 1.5px solid rgba(255,255,255,0.22);
+  box-shadow: 0 2px 10px rgba(0,0,0,.25), 0 0 18px rgba(139,92,246,.25);
+  transition: transform .2s ease, box-shadow .25s ease, border-color .2s ease;
+}
+.logo-badge:hover .logo-mark {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 22px rgba(0,0,0,.28), 0 0 28px rgba(139,92,246,.35);
+  border-color: rgba(255,255,255,.32);
+}
+.logo-word {
+  font-weight: 800; font-size: 1.12rem; letter-spacing: .2px; color: #fff; opacity: .95;
+}
+.logo-icon {
+  width: 20px; height: 20px; stroke: #fff; stroke-width: 2; fill: none; opacity: .95;
+}
+.logo-badge[data-anim="pulse"] .logo-mark::after {
+  content: ""; position: absolute; inset: -4px; border-radius: 999px;
+  border: 2px solid rgba(255, 107, 157, 0.15);
+  animation: ringPulse 2.4s ease-out infinite;
+}
+@keyframes ringPulse { 0% { transform: scale(.9); opacity: .6; } 100% { transform: scale(1.25); opacity: 0; } }
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .menuBar { flex-direction: column; align-items: center; }
+  .App-header h1 { font-size: 1.6rem; }
+}

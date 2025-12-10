@@ -1,0 +1,99 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type AttemptLevelScoreType {
+  scenario_id: Int!
+  score: Int!
+}
+
+type AwardedBadge {
+  badge_id: Int!
+  description: String!
+  icon_url: String
+  name: String!
+}
+
+type BadgeEntity {
+  badge_id: Int!
+  description: String!
+  icon_url: String
+  level_id: Int!
+  name: String!
+}
+
+type LevelEntity {
+  description: String
+  difficulty_order: Int!
+  level_id: Int!
+  title: String!
+}
+
+type LevelProgress {
+  completed: Boolean!
+  level_id: Int!
+  next_level_unlocked: Float
+  perfect_in_level: Float
+  total_in_level: Float
+}
+
+type Mutation {
+  submitScenario(scenarioId: Int!, userAnswers: [String!]!, userId: Int!): SubmitScenarioResult!
+}
+
+type Query {
+  attemptsForUserLevel(levelId: Int!, userId: Int!): [AttemptLevelScoreType!]!
+  badge(id: Int!): BadgeEntity!
+  badges: [BadgeEntity!]!
+  level(id: Int!): LevelEntity!
+  levels: [LevelEntity!]!
+  scenario(id: Int!): ScenarioEntity!
+  scenarios: [ScenarioEntity!]!
+  scenariosByLevel(levelId: Int!): [ScenarioEntity!]!
+  userLevelsByUser(userId: Int!): [UserLevelEntity!]!
+  userLevelsByUserLevel(levelId: Int!, userId: Int!): UserLevelEntity!
+}
+
+type ScenarioEntity {
+  description: String
+  image_url: String
+  level_id: Int!
+  scenario_id: Int!
+  steps: [ScenarioStepEntity!]
+  title: String!
+}
+
+type ScenarioStepEntity {
+  correct_action: String!
+  feedback_message: String
+  options: ScenarioStepOptions!
+  question_text: String!
+  scenario_id: Int!
+  step_id: Int!
+  step_order: Int!
+}
+
+type ScenarioStepOptions {
+  A: String!
+  B: String!
+  C: String!
+  D: String!
+}
+
+type SubmitScenarioResult {
+  all_correct: Boolean!
+  awarded_badge: AwardedBadge
+  level_id: Int!
+  level_progress: LevelProgress!
+  scenario_id: Int!
+  score: Int!
+  updated_scenario: ScenarioEntity
+}
+
+type UserLevelEntity {
+  completed: Boolean!
+  level_id: Int!
+  unlocked: Boolean!
+  user_id: Int!
+  user_level_id: Int!
+}
