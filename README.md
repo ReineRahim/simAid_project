@@ -91,7 +91,7 @@ Users progress through levels, earn badges, and unlock certificates for masterin
 ---
 
 ## 🗂️ Project Structure
-
+```
 simaid/
 ├── backend/
 │ ├── src/
@@ -122,7 +122,7 @@ simaid/
 ├── .env.example # Environment variable template
 ├── README.md
 └── package.json # Root project config (optional)
-
+```
 
 ---
 
